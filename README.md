@@ -26,7 +26,7 @@ winget install --id Python.Python.3.11 -e --source winget
 winget install --id OpenJS.NodeJS.LTS -e --source winget
 ```
  
-### 🐧 Linux (Ubuntu / Debian / WSL)
+#### 🐧 Linux (Ubuntu / Debian / WSL)
 打开终端，依次运行：
 ```bash
 sudo apt update
@@ -79,7 +79,9 @@ pip install -r requirements.txt
 ```
 
 #### 4. 启动服务
+```bash
 uvicorn main:app --reload
+```
 出现 Application startup complete. 提示说明后端已运行在 http://localhost:8000。请保持该终端窗口不要关闭。
 
 #### 5. 🎨 启动前端界面 (Next.js)
