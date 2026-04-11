@@ -24,7 +24,6 @@
 winget install --id Git.Git -e --source winget
 winget install --id Python.Python.3.11 -e --source winget
 winget install --id OpenJS.NodeJS.LTS -e --source winget
-(注：安装完成后，请务必重启终端或 VSCode 让环境变量生效)
 ```
  
 ### 🐧 Linux (Ubuntu / Debian / WSL)
@@ -39,8 +38,10 @@ sudo apt install -y nodejs
 
 ### 2. 📥 克隆项目
 打开终端，拉取代码并进入目录：
+```bash
 git clone https://github.com/boolzzz/ai-music-engine.git
 cd ai-music-engine
+```
 
 ### 3. 🔑 配置 Gitee API 秘钥 
 本项目依赖 Gitee AI 提供的底层算力。Gitee 对实名认证用户提供每天 100 次的免费调用额度。
@@ -54,15 +55,28 @@ GITEE_API_KEY=在这里填入你获取到的真实秘钥
 ### 4. ⚙️ 启动后端引擎 (Python FastAPI)
 在终端中，依次运行以下命令：
 1. 创建虚拟环境 (隔离依赖)
-Windows: python -m venv venv
-Linux: python3 -m venv venv
+#### Windows: 
+```powershell
+python -m venv venv
+```
+#### Linux: 
+```bash
+python3 -m venv venv
+```
 
 # 2. 激活虚拟环境
-Windows: .\venv\Scripts\activate 
+Windows: 
+```powershell
+.\venv\Scripts\activate 
+```
+```bash
 Linux: source venv/bin/activate
+```
 
 # 3. 自动安装后端所有依赖包
+```bash
 pip install -r requirements.txt
+```
 
 # 4. 启动服务
 uvicorn main:app --reload
@@ -71,12 +85,18 @@ uvicorn main:app --reload
 5. 🎨 启动前端界面 (Next.js)
 新建一个终端标签页，依次运行：
 # 1. 进入前端目录
+```bash
 cd frontend
+```
 
 # 2. 自动安装前端依赖 
+```bash
 npm install
+```
 
 # 3. 启动前端服务
+```bash
 npm run dev
+```
 打开浏览器，访问 http://localhost:3000 开始创作！
 
