@@ -11,7 +11,7 @@ const PRESET_TAGS = {
     { label: "流行", value: "pop" },
     { label: "摇滚", value: "rock" },
     { label: "民谣", value: "folk" },
-    { label: "电子c", value: "electronic" },
+    { label: "电子", value: "electronic" },
     { label: "说唱", value: "hip-hop, rap" },
     { label: "节奏蓝调", value: "r&b" },
     { label: "抒情", value: "ballad" },
