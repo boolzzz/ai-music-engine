@@ -81,9 +81,13 @@ pip install -r requirements.txt
 
 #### 4. 启动服务
 ```bash
-uvicorn main:app --reload
+uvicorn main:app
 ```
 出现 Application startup complete. 提示说明后端已运行在 http://localhost:8000。请保持该终端窗口不要关闭。
+如果想要更改后端代码实时生效不重启则使用下面命令，但是热重载机制很消耗电脑性能（因为要一直扫描文件变化）。
+```bash
+uvicorn main:app --reload
+```
 
 #### 5. 🎨 启动前端界面 (Next.js)
 新建一个终端标签页，依次运行：
