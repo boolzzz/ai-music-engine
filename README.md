@@ -55,11 +55,11 @@ GITEE_API_KEY=在这里填入你获取到的真实秘钥
 ### 4. ⚙️ 启动后端引擎 (Python FastAPI)
 在终端中，依次运行以下命令：
 #### 1. 创建虚拟环境 (隔离依赖)
-##### Windows: 
+Windows: 
 ```powershell
 python -m venv venv
 ```
-##### Linux: 
+Linux: 
 ```bash
 python3 -m venv venv
 ```
@@ -69,8 +69,9 @@ Windows:
 ```powershell
 .\venv\Scripts\activate 
 ```
+Linux:
 ```bash
-Linux: source venv/bin/activate
+source venv/bin/activate
 ```
 
 #### 3. 自动安装后端所有依赖包
