@@ -1,0 +1,14 @@
+# Python 虚拟环境和缓存
+musproj/
+__pycache__/
+*.pyc
+
+# 环境变量文件 (极其重要，防止秘钥泄露)
+.env
+
+# 前端依赖和打包文件
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+.DS_Store
