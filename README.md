@@ -54,17 +54,17 @@ GITEE_API_KEY=在这里填入你获取到的真实秘钥
 
 ### 4. ⚙️ 启动后端引擎 (Python FastAPI)
 在终端中，依次运行以下命令：
-1. 创建虚拟环境 (隔离依赖)
-#### Windows: 
+#### 1. 创建虚拟环境 (隔离依赖)
+##### Windows: 
 ```powershell
 python -m venv venv
 ```
-#### Linux: 
+##### Linux: 
 ```bash
 python3 -m venv venv
 ```
 
-# 2. 激活虚拟环境
+#### 2. 激活虚拟环境
 Windows: 
 ```powershell
 .\venv\Scripts\activate 
@@ -73,28 +73,28 @@ Windows:
 Linux: source venv/bin/activate
 ```
 
-# 3. 自动安装后端所有依赖包
+#### 3. 自动安装后端所有依赖包
 ```bash
 pip install -r requirements.txt
 ```
 
-# 4. 启动服务
+#### 4. 启动服务
 uvicorn main:app --reload
 出现 Application startup complete. 提示说明后端已运行在 http://localhost:8000。请保持该终端窗口不要关闭。
 
-5. 🎨 启动前端界面 (Next.js)
+#### 5. 🎨 启动前端界面 (Next.js)
 新建一个终端标签页，依次运行：
-# 1. 进入前端目录
+##### 1. 进入前端目录
 ```bash
 cd frontend
 ```
 
-# 2. 自动安装前端依赖 
+##### 2. 自动安装前端依赖 
 ```bash
 npm install
 ```
 
-# 3. 启动前端服务
+##### 3. 启动前端服务
 ```bash
 npm run dev
 ```
