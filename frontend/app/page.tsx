@@ -87,7 +87,7 @@ const CustomAudioPlayer = ({ src }: { src: string }) => {
         </motion.div>
         
         <div className="flex-1 flex flex-col justify-center">
-          <div className="text-[15px] font-bold text-slate-800 tracking-wide mb-0.5">AI 灵感原创曲目</div>
+          <div className="text-[15px] font-bold text-slate-800 tracking-wide mb-0.5">灵感原创曲目</div>
           <div className="text-xs text-indigo-500 font-semibold tracking-wider uppercase">Original Track</div>
         </div>
 
@@ -170,7 +170,7 @@ export default function Home() {
       <header className="h-16 flex items-center px-8 bg-white/40 backdrop-blur-md border-b border-white/50 shadow-sm relative z-10">
         <div className="flex items-center gap-3 text-lg font-extrabold tracking-wide text-indigo-900">
           <div className="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center shadow-lg"><Music className="w-4 h-4 text-white" /></div>
-          灵感音乐工作台
+          灵感音乐生成引擎
         </div>
         <span className="ml-auto text-xs font-semibold text-indigo-600/60 tracking-widest uppercase">AI AUDIO STUDIO</span>
       </header>
