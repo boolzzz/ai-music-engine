@@ -4,6 +4,7 @@ from pydantic import BaseModel
 import requests
 import asyncio
 import os
+import re
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -24,6 +25,17 @@ headers = {
     "Content-Type": "application/json"
 }
 
+
+def clean_model_output(text: str) -> str:
+    text = re.sub(r"<think>[\s\S]*?</think>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<analysis>[\s\S]*?</analysis>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<reasoning>[\s\S]*?</reasoning>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"<internal>[\s\S]*?</internal>", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"^\s*<think>.*$", "", text, flags=re.IGNORECASE | re.MULTILINE)
+    text = re.sub(r"^\s*</think>.*$", "", text, flags=re.IGNORECASE | re.MULTILINE)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
 # --- 数据模型 ---
 class MusicRequest(BaseModel):
     prompt: str = ""
@@ -38,7 +50,7 @@ class MusicRequest(BaseModel):
     duration: int = 300  
 
 # =====================================================================
-# 🧠 大语言模型自动作词接口
+# 🧠 新增功能：大语言模型自动作词接口
 # =====================================================================
 @app.post("/api/generate-lyrics")
 async def generate_lyrics(req: LyricRequest):
@@ -68,14 +80,15 @@ async def generate_lyrics(req: LyricRequest):
     }
 
     try:
-        print(f"✍️ 正在呼叫灵感音乐引擎创作歌词，主题: {req.topic}")
+        print(f"✍️ 正在自主创作歌词，主题: {req.topic}")
         res = requests.post(llm_url, headers=headers, json=payload, timeout=120)
         if res.status_code != 200:
             raise HTTPException(status_code=502, detail=f"模型调用失败: {res.text}")
             
         data = res.json()
         if "choices" in data:
-            lyrics = data["choices"][0]["message"]["content"].strip()
+            raw_lyrics = data["choices"][0]["message"]["content"]
+            lyrics = clean_model_output(raw_lyrics)
             print("✅ 歌词创作完成！")
             return {"success": True, "lyrics": lyrics}
         else:
