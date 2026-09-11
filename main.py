@@ -38,7 +38,7 @@ class MusicRequest(BaseModel):
     duration: int = 300  
 
 # =====================================================================
-# 🧠 新增功能：大语言模型（DeepSeek-V3）自动作词接口
+# 🧠 大语言模型自动作词接口
 # =====================================================================
 @app.post("/api/generate-lyrics")
 async def generate_lyrics(req: LyricRequest):
@@ -51,7 +51,7 @@ async def generate_lyrics(req: LyricRequest):
     llm_url = "https://ai.gitee.com/v1/chat/completions"
     
     # 给 AI 设定人设（提示词工程）
-    system_prompt = """你是一个顶级的流行音乐金牌作词人。
+    system_prompt = """你是一个顶级的音乐金牌作词人。
     请根据用户提供的主题，创作一首适合AI生成的中文歌词。
     要求：
     1. 必须包含标准的结构标记，如 [Verse] (主歌)、[Chorus] (副歌)、[Bridge] (桥段) 等。
@@ -68,10 +68,10 @@ async def generate_lyrics(req: LyricRequest):
     }
 
     try:
-        print(f"✍️ 正在呼叫 DeepSeek 创作歌词，主题: {req.topic}")
-        res = requests.post(llm_url, headers=headers, json=payload, timeout=30)
+        print(f"✍️ 正在呼叫灵感音乐引擎创作歌词，主题: {req.topic}")
+        res = requests.post(llm_url, headers=headers, json=payload, timeout=120)
         if res.status_code != 200:
-            raise HTTPException(status_code=502, detail=f"大模型调用失败: {res.text}")
+            raise HTTPException(status_code=502, detail=f"模型调用失败: {res.text}")
             
         data = res.json()
         if "choices" in data:
@@ -79,7 +79,7 @@ async def generate_lyrics(req: LyricRequest):
             print("✅ 歌词创作完成！")
             return {"success": True, "lyrics": lyrics}
         else:
-            raise HTTPException(status_code=500, detail="大模型返回格式异常")
+            raise HTTPException(status_code=500, detail="模型返回格式异常")
     except Exception as e:
         print(f"❌ 歌词生成错误: {e}")
         raise HTTPException(status_code=500, detail=str(e))
