@@ -60,7 +60,7 @@ async def generate_lyrics(req: LyricRequest):
     4. 【重要】只输出歌词本身，绝对不要输出任何多余的解释、废话或标题！"""
 
     payload = {
-        "model": "DeepSeek-V3", 
+        "model": "DeepSeek-R1-Distill-Qwen-7B", 
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": f"请为我写一首歌，主题/要求是：{req.topic}"}
